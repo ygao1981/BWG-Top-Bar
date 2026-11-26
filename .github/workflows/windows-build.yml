@@ -1,0 +1,31 @@
+name: Windows build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Build win-x64 standalone application
+        shell: pwsh
+        run: ./build-win.ps1
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: BWG-Top-Bar-win-x64
+          path: publish/win-x64/BwgTopBar.exe
+          if-no-files-found: error

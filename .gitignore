@@ -1,0 +1,29 @@
+# .NET / Visual Studio
+**/bin/
+**/obj/
+.vs/
+.idea/
+*.user
+*.suo
+*.pdb
+
+# Published binaries and local diagnostics
+publish/
+*.log
+*.tmp
+
+# Keys, local configuration and exported credentials
+settings.json
+.env
+.env.*
+*.pem
+*.ppk
+*.pfx
+*.key
+*.kdbx
+.ssh/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
